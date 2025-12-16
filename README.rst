@@ -33,7 +33,7 @@
 dbscan-project
 ==============
 
-**DBSCAN from scratch in Python** + tests comparing results with ``sklearn.DBSCAN``.
+**DBSCAN  in Python** + tests comparing results with ``sklearn.DBSCAN``.
 The implementation clusters points based on density (``eps`` and ``min_samples``) and marks outliers as noise (label ``-1``).
 
 Key features
