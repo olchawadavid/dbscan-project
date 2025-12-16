@@ -40,28 +40,51 @@ The project also includes pytest tests that compare the custom implementation wi
 the number of points in each cluster, and the number of noise points on the Iris, make_blobs, and make_moons datasets. 
 In addition, a simple runtime test is included to compare performance.
 
-=== Goal of the project ===
-- Implement DBSCAN from scratch in Python
-- Compare outputs with scikit-learn DBSCAN
-- Provide tests and reproducible project structure (PyScaffold + VirtualEnv + Git)
+Requirements
+• Python 3.x
+• pytest (for running tests)
+• scikit-learn (for dataset generation and comparison)
 
-=== Requirements ===
-- Python 3.x
-- pytest
-- scikit-learn
+2. Algorithm description
+DBSCAN finds clusters as connected dense regions and labels isolated points as noise.
+It is useful for irregular cluster shapes and for outlier detection.
 
-=== Comparison strategy ===
-Direct label comparison is not reliable because cluster IDs can be different.
-The project compares:
-- number of clusters
-- number of noise points
-- number of points per cluster
-for:
-- IRIS
-- make_blobs
-- make_moons
+Parameters
+• eps: neighborhood radius. Two points are neighbors if their distance is less than or equal to eps.
+• min_samples: minimum number of neighbors required to treat a point as dense (a core point).
 
+Point types
+• Core point: has at least min_samples neighbors within eps.
+• Border point: not dense enough to be core, but reachable from a core point.
+• Noise point: not reachable from any cluster; labeled as -1.
 
+Distance metric
+This project uses Euclidean distance:
+d(p, q) = sqrt( sum_i (p_i - q_i)^2 )
+
+3. User manual
+Class: My_DBSCAN
+File: src/dbscan_project/dbscan_alghoritm.py
+
+Constructor
+My_DBSCAN(eps=0.5, min_samples=5)
+
+Parameters:
+• eps (float > 0): neighborhood radius
+• min_samples (int > 0): minimum neighbors for a core point
+
+Input format
+X should be a list of points, for example: [[x1, y1], [x2, y2], ...].
+All points must have the same number of features.
+
+Methods
+• fit(X): runs clustering and stores results in self.labels and self.n_clusters; returns self.
+• fit_predict(X): calls fit(X) and returns self.labels.
+
+Output labels
+• -1 means noise
+• 1, 2, 3, ... are cluster IDs
+• 0 is used only internally for unassigned points
 .. _pyscaffold-notes:
 
 Note
