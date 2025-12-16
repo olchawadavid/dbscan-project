@@ -33,66 +33,94 @@
 dbscan-project
 ==============
 
+**DBSCAN from scratch in Python** + tests comparing results with ``sklearn.DBSCAN``.
+The implementation clusters points based on density (``eps`` and ``min_samples``) and marks outliers as noise (label ``-1``).
 
-   The project implements the DBSCAN clustering algorithm from scratch in Python as a class called My_DBSCAN. 
-The algorithm groups points based on density using the parameters eps and min_samples, and it marks outliers as noise (-1). 
-The project also includes pytest tests that compare the custom implementation with sklearn.DBSCAN by checking the number of clusters, 
-the number of points in each cluster, and the number of noise points on the Iris, make_blobs, and make_moons datasets. 
-In addition, a simple runtime test is included to compare performance.
+Key features
+============
 
-
+* Custom DBSCAN class: ``My_DBSCAN``
+* Tests on datasets: Iris, ``make_blobs``, ``make_moons``
+* Comparison with scikit-learn:
+  * number of clusters
+  * number of points per cluster
+  * number of noise points
+* Simple runtime comparison (custom vs sklearn)
 
 Requirements
-• Python 3.x
-• pytest (for running tests)
-• scikit-learn (for dataset generation and comparison)
+============
 
+* Python 3.x
+* pytest (tests)
+* scikit-learn (datasets + reference DBSCAN)
 
+Installation
+============
 
-2. Algorithm description
+If you want to run locally:
+
+.. code-block:: bash
+
+   python -m venv .venv
+   source .venv/bin/activate  # Windows: .venv\Scripts\activate
+   pip install -r requirements.txt
+
+Usage
+=====
+
+Class: ``My_DBSCAN``
+File: ``src/dbscan_project/dbscan_alghoritm.py``
+
+.. code-block:: python
+
+   from dbscan_project.dbscan_alghoritm import My_DBSCAN
+
+   X = [[0.0, 0.0], [0.1, 0.0], [10.0, 10.0]]
+   model = My_DBSCAN(eps=0.3, min_samples=2)
+
+   labels = model.fit_predict(X)
+   print(labels)  # -1 = noise, 1..k = clusters
+
+Algorithm description
+=====================
+
 DBSCAN finds clusters as connected dense regions and labels isolated points as noise.
-It is useful for irregular cluster shapes and for outlier detection.
+It works well for irregular cluster shapes and outlier detection.
 
 Parameters
-• eps: neighborhood radius. Two points are neighbors if their distance is less than or equal to eps.
-• min_samples: minimum number of neighbors required to treat a point as dense (a core point).
+----------
+
+* ``eps``: neighborhood radius (two points are neighbors if distance <= eps)
+* ``min_samples``: minimum number of neighbors to treat a point as a core point
 
 Point types
-• Core point: has at least min_samples neighbors within eps.
-• Border point: not dense enough to be core, but reachable from a core point.
-• Noise point: not reachable from any cluster; labeled as -1.
+-----------
+
+* **Core point**: has at least ``min_samples`` neighbors within ``eps``
+* **Border point**: not dense enough to be core, but reachable from a core point
+* **Noise point**: not reachable from any cluster; labeled as ``-1``
 
 Distance metric
-This project uses Euclidean distance:
-d(p, q) = sqrt( sum_i (p_i - q_i)^2 )
+---------------
 
-3. User manual
-Class: My_DBSCAN
-File: src/dbscan_project/dbscan_alghoritm.py
+Euclidean distance:
 
-Constructor
-My_DBSCAN(eps=0.5, min_samples=5)
+.. code-block:: text
 
-Parameters:
-• eps (float > 0): neighborhood radius
-• min_samples (int > 0): minimum neighbors for a core point
+   d(p, q) = sqrt( sum_i (p_i - q_i)^2 )
 
-Input format
-X should be a list of points, for example: [[x1, y1], [x2, y2], ...].
-All points must have the same number of features.
+Running tests
+=============
 
-Methods
+.. code-block:: bash
 
-• fit(X): runs clustering and stores results in self.labels and self.n_clusters; returns self.
-• fit_predict(X): calls fit(X) and returns self.labels.
+   pytest -q
 
+Results / Conclusion
+====================
 
-
-Output labels
-• -1 means noise
-• 1, 2, 3, ... are cluster IDs
-• 0 is used only internally for unassigned points
-.. _pyscaffold-notes:
+The custom DBSCAN implementation produces the same clustering results as scikit-learn on the tested datasets.
+Scikit-learn is faster because it is highly optimized, while the custom version is simpler and easier to understand.
 
 Note
 ====
