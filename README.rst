@@ -54,17 +54,6 @@ Requirements
 * pytest (tests)
 * scikit-learn (datasets + reference DBSCAN)
 
-Installation
-============
-
-If you want to run locally:
-
-.. code-block:: bash
-
-   python -m venv .venv
-   source .venv/bin/activate  # Windows: .venv\Scripts\activate
-   pip install -r requirements.txt
-
 Usage
 =====
 
@@ -109,12 +98,6 @@ Euclidean distance:
 
    d(p, q) = sqrt( sum_i (p_i - q_i)^2 )
 
-Running tests
-=============
-
-.. code-block:: bash
-
-   pytest -q
 
 Results / Conclusion
 ====================
