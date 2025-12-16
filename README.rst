@@ -40,10 +40,14 @@ The project also includes pytest tests that compare the custom implementation wi
 the number of points in each cluster, and the number of noise points on the Iris, make_blobs, and make_moons datasets. 
 In addition, a simple runtime test is included to compare performance.
 
+
+
 Requirements
 • Python 3.x
 • pytest (for running tests)
 • scikit-learn (for dataset generation and comparison)
+
+
 
 2. Algorithm description
 DBSCAN finds clusters as connected dense regions and labels isolated points as noise.
