@@ -60,16 +60,6 @@ Usage
 Class: ``My_DBSCAN``
 File: ``src/dbscan_project/dbscan_alghoritm.py``
 
-.. code-block:: python
-
-   from dbscan_project.dbscan_alghoritm import My_DBSCAN
-
-   X = [[0.0, 0.0], [0.1, 0.0], [10.0, 10.0]]
-   model = My_DBSCAN(eps=0.3, min_samples=2)
-
-   labels = model.fit_predict(X)
-   print(labels)  # -1 = noise, 1..k = clusters
-
 Algorithm description
 =====================
 
