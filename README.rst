@@ -82,7 +82,6 @@ X should be a list of points, for example: [[x1, y1], [x2, y2], ...].
 All points must have the same number of features.
 
 Methods
-===
 
 • fit(X): runs clustering and stores results in self.labels and self.n_clusters; returns self.
 • fit_predict(X): calls fit(X) and returns self.labels.
