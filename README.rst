@@ -34,7 +34,11 @@ dbscan-project
 ==============
 
 
-    Add a short description here!
+   The project implements the DBSCAN clustering algorithm from scratch in Python as a class called My_DBSCAN. 
+The algorithm groups points based on density using the parameters eps and min_samples, and it marks outliers as noise (-1). 
+The project also includes pytest tests that compare the custom implementation with sklearn.DBSCAN by checking the number of clusters, 
+the number of points in each cluster, and the number of noise points on the Iris, make_blobs, and make_moons datasets. 
+In addition, a simple runtime test is included to compare performance.
 
 
 A longer description of your project goes here...
