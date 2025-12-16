@@ -85,6 +85,9 @@ Methods
 • fit(X): runs clustering and stores results in self.labels and self.n_clusters; returns self.
 • fit_predict(X): calls fit(X) and returns self.labels.
 
+Note
+====
+
 Output labels
 • -1 means noise
 • 1, 2, 3, ... are cluster IDs
