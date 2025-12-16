@@ -40,8 +40,26 @@ The project also includes pytest tests that compare the custom implementation wi
 the number of points in each cluster, and the number of noise points on the Iris, make_blobs, and make_moons datasets. 
 In addition, a simple runtime test is included to compare performance.
 
+## Goal of the project
+- Implement DBSCAN from scratch in Python
+- Compare outputs with scikit-learn DBSCAN
+- Provide tests and reproducible project structure (PyScaffold + VirtualEnv + Git)
 
-A longer description of your project goes here...
+## Requirements
+- Python 3.x
+- pytest
+- scikit-learn
+
+## Comparison strategy
+Direct label comparison is not reliable because cluster IDs can be different.
+The project compares:
+- number of clusters
+- number of noise points
+- number of points per cluster
+for:
+- IRIS
+- make_blobs
+- make_moons
 
 
 .. _pyscaffold-notes:
